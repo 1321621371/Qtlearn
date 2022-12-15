@@ -13,11 +13,16 @@ class Dialog : public QDialog
 
 public:
     explicit Dialog(QWidget *parent = nullptr);
+    QString   str;
+     QByteArray ba;
     ~Dialog();
 
 private slots:
+    void on_pushButton_clicked();
 
-    void on_pushButton_dialog_clicked();
+    void on_horizontalSlider_valueChanged(int value);
+
+    void on_spinBox_valueChanged(int arg1);
 
 private:
     Ui::Dialog *ui;
