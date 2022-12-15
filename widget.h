@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "dialog.h"
+#include "testbeep.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -19,6 +20,7 @@ public:
 private slots:
 
     void on_backlightButton_clicked();
+    void on_beepButton_clicked();
 
 private:
     Ui::Widget *ui;

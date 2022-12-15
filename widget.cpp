@@ -26,3 +26,10 @@ void Widget::on_backlightButton_clicked()
         dialog->show();
 }
 
+void Widget::on_beepButton_clicked()
+{
+    testBeep *t_ = new testBeep(this);
+        t_->setModal(true);
+        t_->show();
+}
+

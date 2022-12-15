@@ -11,14 +11,17 @@ CONFIG += c++11
 SOURCES += \
     dialog.cpp \
     main.cpp \
+    testbeep.cpp \
     widget.cpp
 
 HEADERS += \
     dialog.h \
+    testbeep.h \
     widget.h
 
 FORMS += \
     dialog.ui \
+    testbeep.ui \
     widget.ui
 
 # Default rules for deployment.
