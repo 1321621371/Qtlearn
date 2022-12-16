@@ -1,4 +1,4 @@
-#include "dialog.h"
+#include "testbacklight.h"
 #include "ui_dialog.h"
 #include <QDebug>
 

@@ -2,7 +2,7 @@
 #define WIDGET_H
 
 #include <QWidget>
-#include "dialog.h"
+#include "testbacklight.h"
 #include "testbeep.h"
 
 QT_BEGIN_NAMESPACE

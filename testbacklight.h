@@ -1,5 +1,5 @@
-#ifndef DIALOG_H
-#define DIALOG_H
+#ifndef TESTBACKLIGHT_H
+#define TESTBACKLIGHT_H
 
 #include <QDialog>
 
@@ -28,4 +28,4 @@ private:
     Ui::Dialog *ui;
 };
 
-#endif // DIALOG_H
+#endif // TESTBACKLIGHT_H
