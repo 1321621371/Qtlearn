@@ -2,6 +2,7 @@
 #include "ui_dialog.h"
 #include <QDebug>
 
+#define SYS_BACKLIGHT  "/sys/class/backlight/backlight/brightness"
 #define Max 255
 #define  NSINGLESTEP   5
 Dialog::Dialog(QWidget *parent) :
@@ -9,13 +10,19 @@ Dialog::Dialog(QWidget *parent) :
     ui(new Ui::Dialog)
 {
     ui->setupUi(this);
-    this->setFixedSize(600,380);
-   // QTextCodec *codec = QTextCodec::codecForName("UTF-8");//添加编码格式
-  //  ui->label->setText(codec->toUnicode("背光等级")); //使用方法
+    this->setFixedSize(800,480);
     ui->horizontalSlider->setRange(0,Max);
     ui->spinBox->setRange(0,Max);
-    ui->horizontalSlider->setValue(Max);
-    ui->spinBox->setValue(Max);
+    QFile f(SYS_BACKLIGHT);
+    if(!f.open(QIODevice::ReadOnly))
+        {
+
+          this->ui->label->setText(" open Fail");
+            return;
+        }
+    QString va = f.readAll();
+    ui->horizontalSlider->setValue(va.toInt());
+    ui->spinBox->setValue(va.toInt());
     ui->horizontalSlider->setPageStep(10);
 }
 

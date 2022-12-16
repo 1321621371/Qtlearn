@@ -2,6 +2,7 @@
 #define TESTBACKLIGHT_H
 
 #include <QDialog>
+#include "QFile"
 
 namespace Ui {
 class Dialog;
@@ -15,6 +16,7 @@ public:
     explicit Dialog(QWidget *parent = nullptr);
     QString   str;
      QByteArray ba;
+     QFile f;
     ~Dialog();
 
 private slots:
