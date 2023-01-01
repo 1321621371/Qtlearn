@@ -33,3 +33,11 @@ void Widget::on_beepButton_clicked()
         t_->show();
 }
 
+
+void Widget::on_touchButton_clicked()
+{
+    testTouch *touch = new testTouch(this);
+    touch->setModal(true);
+    touch->show();
+}
+

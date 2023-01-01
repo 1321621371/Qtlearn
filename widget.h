@@ -4,6 +4,7 @@
 #include <QWidget>
 #include "testbacklight.h"
 #include "testbeep.h"
+#include "testtouch.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -21,6 +22,8 @@ private slots:
 
     void on_backlightButton_clicked();
     void on_beepButton_clicked();
+
+    void on_touchButton_clicked();
 
 private:
     Ui::Widget *ui;

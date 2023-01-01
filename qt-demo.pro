@@ -12,16 +12,22 @@ SOURCES += \
     main.cpp \
     testbacklight.cpp \
     testbeep.cpp \
+    testtouch.cpp \
+    touchdialog.cpp \
     widget.cpp
 
 HEADERS += \
     testbacklight.h \
     testbeep.h \
+    testtouch.h \
+    touchdialog.h \
     widget.h
 
 FORMS += \
     testbacklight.ui \
     testbeep.ui \
+    testtouch.ui \
+    touchdialog.ui \
     widget.ui
 
 # Default rules for deployment.
