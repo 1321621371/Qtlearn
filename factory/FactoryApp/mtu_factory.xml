@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <section_boot value="board"></section_boot>
+
+    <devices>
+        <device name="usb1" sysfs="/sys/devices/soc0/soc/2100000.aips-bus/2184200.usb/ci_hdrc.1/usb1/1-1/1-1.3" point="/mnt/media_rw"></device>
+        <device name="sdcard" sysfs="/sys/devices/soc0/soc/2100000.aips-bus/2194000.usdhc/mmc_host/mmc1/mmc1:0001/block/mmcblk1" point="/mnt/media_rw"></device>
+    </devices>
+
+    <section_comm id="net">
+        <net name="primary" device="eth0" timeout="0" ip="192.168.1.232" gateway="192.168.1.1" netmask="255.255.255.0" dns="192.168.1.1" port="60008" server_ip="192.168.1.234"></net>
+        <net name="second" device="eth1" timeout="0" ip="192.168.1.233" gateway="192.168.1.1" netmask="255.255.255.0" dns="192.168.1.1" port="60008" server_ip="192.168.1.234"></net>
+    </section_comm>
+
+    <section_pcba>
+		<item name="fwver" version="V010001"></item>
+        <item name="flash" device="/dev/mmcblk1"></item>
+        <item name="usb1" type="usb2.0"></item> <!--工作模式:USB2.0-->
+        <item name="eth0" device="eth0" ip="192.168.1.232" targetIp="192.168.1.234" speed="100"></item>	<!--百兆网卡-->
+        <item name="eth1" device="eth1" ip="192.168.1.233" targetIp="192.168.1.234" speed="100"></item>
+        <item name="com1" device="ttymxc2" ate="ttymxc1" type="selftest"></item> <!-- 485-1 -->
+        <item name="com2" device="ttymxc1" ate="ttymxc2" type="selftest"></item> <!-- 485-2 -->
+        <item name="com3" device="ttyWCHUSB2" ate="ttyWCHUSB3" type="selftest"></item> <!-- 232-1 -->
+        <item name="com4" device="ttyWCHUSB3" ate="ttyWCHUSB2" type="selftest"></item> <!-- 232-2 -->
+        <item name="can1" device="can1" ate="can0" type="selftest"></item>
+        <item name="can0" device="can0" ate="can1" type="selftest"></item>
+        <item name="gps0" device="ttyWCHUSB1"></item>
+        <item name="4g0" device="ttyUSB2"></item>
+    </section_pcba>
+</config>

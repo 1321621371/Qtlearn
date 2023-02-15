@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+
+    <!-- board/manual/burnning -->
+    <section_boot value="board"></section_boot>
+
+    <devices>
+        <device name="usb1" sysfs="/sys/devices/soc0/soc/2100000.aips-bus/2184200.usb/ci_hdrc.1/usb1/1-1/1-1.3" point="/mnt/media_rw"></device>
+        <device name="sdcard" sysfs="/sys/devices/soc0/soc/2100000.aips-bus/2194000.usdhc/mmc_host/mmc1/mmc1:0001/block/mmcblk1" point="/mnt/media_rw"></device>
+    </devices>
+
+    <section_comm id="net">
+       <net name="primary" device="eth2" timeout="0" ip="192.168.30.200" gateway="192.168.30.1" netmask="255.255.255.0" dns="192.168.1.1" port="60008" server_ip="192.168.30.100"></net>
+       <net name="second" device="eth1" timeout="0" ip="192.168.20.200" gateway="192.168.20.1" netmask="255.255.255.0" dns="192.168.1.1" port="60008" server_ip="192.168.20.160"></net>
+    </section_comm>
+
+    <section_config>
+        <stresstest status="okay" ramsize="64" duration="24" disk="usb0 sata1 sata2" options="-m 2 -C 2"></stresstest>
+        <hdmiin status="disabled"></hdmiin>
+        <cube_3d status="disabled"></cube_3d>
+        <video status="disabled"></video>
+        <float status="okay"></float>
+        <mic_box status="disabled" write_delay="4" read_delay="4"></mic_box>
+    </section_config>
+
+    <section_pcba>
+        <item name="flash" device="/dev/sd-mmcblk0p1"></item> <!--测试使用的分区-->
+        <item name="auth" device="/dev/block/mmcblk0rpmb"></item>
+        <!--<item name="usb1" type="usb2.0"></item>--> <!--工作模式:USB2.0-->
+        <item name="eth0" device="eth0" ip="192.168.10.200" speed="100"></item>	<!--百兆网卡-->
+        <item name="eth1" device="eth1" ip="192.168.20.200" speed="100"></item>
+		 <item name="eth2" device="eth2" ip="192.168.30.200" speed="100"></item>
+		<item name="com1" device="ttyPS1" ate="ttyPS1" type="selftest"></item> <!-- 232-1 -->
+        <item name="com2" device="ttyUL1" ate="ttyUL2" type="selftest"></item> <!-- 485-1 -->
+        <item name="com3" device="ttyUL2" ate="ttyUL3" type="selftest"></item> <!-- 485-2 -->
+		<item name="com4" device="ttyUL3" ate="ttyUL2" type="selftest"></item> <!-- 485-3 -->
+		<item name="com5" device="ttyUL4" ate="ttyUL5" type="selftest"></item> <!-- 485-4 -->
+        <item name="com6" device="ttyUL5" ate="ttyUL4" type="selftest"></item> <!-- 485-5 --> 
+        <item name="can0" device="can0" ate="can2" type="selftest"></item><!--can-0 --> 
+		<item name="can1" device="can1" ate="can0" type="selftest"></item><!--can-1 --> 
+		<item name="can2" device="can2" ate="can0" type="selftest"></item><!--can-2 --> 
+        <item name="gps0" device="ttyWCHUSB1"></item>
+		<item name="4g0" device="ttyUSB3"></item>
+    </section_pcba>
+
+    <section_burnning id="device">
+        <device devicename="usb1" file="evfactory_4k.mp4"></device>
+        <net ip="192.168.12.104" file="factory.mpg"></net>
+        <items>
+           <item title="EMMC测试" id="Flash" unit="1" state="false" timeout="15"></item>
+           <item title="USB0测试" id="USB" unit="0" state="false" timeout="15"></item>
+           <item title="USB1测试" id="USB" unit="2" state="false" timeout="15"></item>
+           <item title="串口0测试" id="COM" unit="0" state="false" timeout="15"></item>
+           <item title="串口1测试" id="COM" unit="1" state="false" timeout="15"></item>
+           <item title="网络接口测试" id="NET" unit="1" state="false" timeout="20">
+               <attr type="ping" ip="192.168.12.1"></attr>
+            </item>
+        </items>
+    </section_burnning>
+
+    <section_pqc>
+        <item name="auth" device="/dev/block/mmcblk0rpmb"></item>
+        <item name="usb0" type="usb3.0"></item>
+        <item name="ethernet" speed="1000"></item>
+    </section_pqc>
+
+    <section_manual>
+        <item title="EMMC测试" id="Flash" unit="1" state="true" timeout="15"></item>
+        <item title="USB0测试" id="USB" unit="1" state="false" timeout="15"></item>
+        <item title="USB1测试" id="USB" unit="2" state="false" timeout="15"></item>
+        <item title="串口0测试" id="COM" unit="0" state="false" timeout="15"></item>
+        <item title="串口1测试" id="COM" unit="1" state="false" timeout="15"></item>
+        <item title="网络接口测试" id="NET" unit="1" state="true" timeout="20">
+            <attr type="ping" ip="192.168.73.1"></attr>
+        </item>
+        <item title="录音输入测试" id="Audio_IN" left="1000" right="2000" state="false" timeout="10"></item>
+        <item title="红外接口测试" id="IR" state="false" timeout="15"></item>
+        <item title="视频播放测试" id="Video" state="true" timeout="50">
+            <attr file="test2.mkv" devicename="usb1"></attr>
+        </item>
+        <item title="音频输出测试" id="Audio" state="false" timeout="50">
+            <attr file="factory.mp3" devicename="usb1"></attr>
+        </item>
+        <item title="HDMI0输出测试" id="HDMI" state="true" timeout="10"></item>
+        <item title="HDMI1输出测试" id="VGA" state="true" timeout="10"></item>
+        <item title="双屏异显测试" id="DoubleOutput" state="true" timeout="10"></item>
+        <item title="HDMIIN测试" id="HDMI_IN" state="true" timeout="10"></item>
+    </section_manual>
+</config>

@@ -1,0 +1,3 @@
+*.o
+/libvdk.so
+/test/test_vdk
